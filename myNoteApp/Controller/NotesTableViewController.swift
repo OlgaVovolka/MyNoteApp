@@ -23,7 +23,7 @@ class NotesTableViewController: UITableViewController,UISearchBarDelegate, UISea
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80.0
-    //    retrieveNotes()
+
         searchBar.delegate = self
         searchBar.showsCancelButton = true
     
@@ -57,14 +57,7 @@ class NotesTableViewController: UITableViewController,UISearchBarDelegate, UISea
         cell.configureCell(note: note)
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
-        let note = self.notes[indexPath.row]
-        self.performSegue(withIdentifier: "editNote", sender: note)
-        
-    }
-    
+
     
     @IBAction func addNewWasClicked(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -95,13 +88,8 @@ class NotesTableViewController: UITableViewController,UISearchBarDelegate, UISea
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
             }
-        let edit = UITableViewRowAction(style: .normal, title: "Изменить") {
-            (action, indexPath) in
-            self.performSegue(withIdentifier: "editNote", sender: self)
-        }
         
-        
-        return [delete,edit]
+        return [delete]
         
     }
     
@@ -142,22 +130,11 @@ class NotesTableViewController: UITableViewController,UISearchBarDelegate, UISea
         }
         
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editNote" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                
-                let noteViewController = segue.destination as! NoteViewController
-                let selectedNote: Note = notes[indexPath.row]
-                
-                noteViewController.indexPath = indexPath.row
-                noteViewController.note = selectedNote
-        }
             
             
-    }
+
     
-}
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != ""{
             var predicate:NSPredicate = NSPredicate()
@@ -181,8 +158,26 @@ class NotesTableViewController: UITableViewController,UISearchBarDelegate, UISea
       
         retrieveNotes()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editNote" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                
+                let noteDetailsViewController = segue.destination as! NoteViewController
+                let selectedNote: Note = notes[indexPath.row]
+                
+                noteDetailsViewController.indexPath = indexPath.row
+                noteDetailsViewController.isExsisting = false
+                noteDetailsViewController.note = selectedNote
+                
+            }
+            
+        }
+        
 
     
 }
 
 
+
+}

@@ -95,10 +95,18 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xob-Cm-NP9">
-                                <rect key="frame" x="152.5" y="438" width="109" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Сохранить"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xob-Cm-NP9" customClass="DesignableButton" customModule="myNoteApp" customModuleProvider="target">
+                                <rect key="frame" x="157" y="438" width="100" height="45"/>
+                                <color key="backgroundColor" red="0.63137963200000002" green="0.83710909649999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Сохранить">
+                                    <color key="titleColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="lsC-me-Cgt" eventType="touchUpInside" id="CBD-tR-b0r"/>
                                 </connections>
@@ -106,11 +114,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Xob-Cm-NP9" firstAttribute="centerX" secondItem="Far-8e-3l5" secondAttribute="centerX" id="2DL-FJ-MFI"/>
                             <constraint firstItem="Far-8e-3l5" firstAttribute="top" secondItem="qeq-91-yvI" secondAttribute="top" constant="20" id="2GG-cD-LKZ"/>
-                            <constraint firstItem="Xob-Cm-NP9" firstAttribute="top" secondItem="qeq-91-yvI" secondAttribute="top" constant="350" id="Ht6-Nt-OGr"/>
+                            <constraint firstItem="Xob-Cm-NP9" firstAttribute="top" secondItem="Far-8e-3l5" secondAttribute="bottom" constant="30" id="KDR-IB-TNd"/>
+                            <constraint firstItem="Xob-Cm-NP9" firstAttribute="leading" secondItem="qeq-91-yvI" secondAttribute="leading" constant="157" id="KvN-I9-2p6"/>
                             <constraint firstItem="qeq-91-yvI" firstAttribute="trailing" secondItem="Far-8e-3l5" secondAttribute="trailing" constant="20" id="Pzf-U7-8kL"/>
                             <constraint firstItem="Far-8e-3l5" firstAttribute="leading" secondItem="qeq-91-yvI" secondAttribute="leading" constant="20" id="eVG-fc-UOf"/>
-                            <constraint firstItem="Xob-Cm-NP9" firstAttribute="centerX" secondItem="W6w-WN-DBc" secondAttribute="centerX" id="mTt-89-yTg"/>
+                            <constraint firstItem="qeq-91-yvI" firstAttribute="bottom" secondItem="Xob-Cm-NP9" secondAttribute="bottom" constant="379" id="x2v-cQ-zj3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qeq-91-yvI"/>
                     </view>
@@ -147,6 +157,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gGB-qG-t98"/>
+        <segue reference="Cj5-lE-KAe"/>
     </inferredMetricsTieBreakers>
 </document>
